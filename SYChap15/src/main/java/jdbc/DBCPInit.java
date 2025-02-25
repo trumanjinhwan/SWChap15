@@ -22,7 +22,7 @@ public class DBCPInit extends HttpServlet {
 
 	private void loadJDBCDriver() {
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException ex) {
 			throw new RuntimeException("fail to load JDBC Driver", ex);
 		}
@@ -30,9 +30,9 @@ public class DBCPInit extends HttpServlet {
 
 	private void initConnectionPool() {
 		try {
-			String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:orcl";
-			String username = "c##jspexam";
-			String pw = "1111";
+			String jdbcUrl = "jdbc:mysql://localhost:3306/guestbook?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8";
+			String username = "jspexam";
+			String pw = "jsppw";
 
 			ConnectionFactory connFactory = new DriverManagerConnectionFactory(jdbcUrl, username, pw);
 			PoolableConnectionFactory poolableConnFactory = new PoolableConnectionFactory(connFactory, null);
