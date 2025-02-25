@@ -4,14 +4,14 @@
 <%@ page import="guestbook.service.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-String pageNumberStr = request.getParameter("page");
-int pageNumber = 1;
-if (pageNumberStr != null) {
-	pageNumber = Integer.parseInt(pageNumberStr);
-}
-
-GetMessageListService messageListService = GetMessageListService.getInstance();
-MessageListView viewData = messageListService.getMessageList(pageNumber);
+	String pageNumberStr = request.getParameter("page");
+	int pageNumber = 1;
+	if (pageNumberStr != null) {
+		pageNumber = Integer.parseInt(pageNumberStr);
+	}
+	
+	GetMessageListService messageListService = GetMessageListService.getInstance();
+	MessageListView viewData = messageListService.getMessageList(pageNumber);
 %>
 <c:set var="viewData" value="<%=viewData%>" />
 <!DOCTYPE html>
